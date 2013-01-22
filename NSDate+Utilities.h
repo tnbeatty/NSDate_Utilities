@@ -69,4 +69,13 @@
  */
 -(BOOL)isSameDayAsDate:(NSDate*)date;
 
+/**
+ Reports the time of the date parameter as an integer between 0 and 2400.
+ 
+ @param date NSDate date to be analyzed.
+ 
+ @return NSInteger Representation of the datetime between 0 and 2400. Always less than 2400.
+ */
+-(NSInteger)time;
+
 @end

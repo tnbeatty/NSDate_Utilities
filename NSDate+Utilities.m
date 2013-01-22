@@ -53,5 +53,10 @@
     [comp1 year]  == [comp2 year];
 }
 
+-(NSInteger)time {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:self];
+    return ([components hour] * 100) + [components minute];
+}
 
 @end
