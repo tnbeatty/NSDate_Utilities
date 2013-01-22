@@ -1,5 +1,5 @@
 //
-//  NSDate+NSDate_Utilities.h
+//  NSDate+Utilities.h
 //  MiddMenus
 //
 //  Created by Thomas Beatty on 1/21/13.
@@ -14,7 +14,7 @@
  This class extends NSDate to include functions for manipulating time.
  */
 
-@interface NSDate (NSDate_Utilities)
+@interface NSDate (Utilities)
 
 ///---------------------------------------------------------------------------------------
 /// @name Class Methods
@@ -23,7 +23,7 @@
 /**
  Returns a new object the same day at the date specified.
  
- The object returned is at midnight of the morning of the date parameter. Does not preserve time, only day.
+ The object returned is at midnight of the morning of the date parameter. Does not preserve time, only day. Time zone is preserved.
  
  @param date Date to find the day of.
  
@@ -34,7 +34,7 @@
 /**
  Returns a new object the day after the date specified.
  
- The object returned is at midnight of the morning of the day after the date parameter. Does not preserve time, only day.
+ The object returned is at midnight of the morning of the day after the date parameter. Does not preserve time, only day. Time zone is preserved.
  
  @param date Date to find the day after.
  

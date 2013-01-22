@@ -1,23 +1,34 @@
 //
-//  NSDate+NSDate_Utilities.m
+//  NSDate+Utilities.m
 //  MiddMenus
 //
 //  Created by Thomas Beatty on 1/21/13.
 //  Copyright (c) 2013 Thomas Beatty. All rights reserved.
 //
 
-#import "NSDate+NSDate_Utilities.h"
+#import "NSDate+Utilities.h"
 
-@implementation NSDate (NSDate_Utilities)
+@implementation NSDate (Utilities)
 
 #pragma mark - Class Methods
 
 +(NSDate *)dayOf:(NSDate *)date {
     
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    [calendar setTimeZone:[NSTimeZone localTimeZone]];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSTimeZoneCalendarUnit);
+    NSDate * today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:date]];
+    
+    return today;
 }
 
 +(NSDate *)dayAfter:(NSDate *)date {
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    [calendar setTimeZone:[NSTimeZone localTimeZone]];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSTimeZoneCalendarUnit);
+    NSDate * today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:[NSDate dateWithTimeInterval:(24*3600) sinceDate:date]]];
     
+    return today;
 }
 
 +(NSString *)currentUnixTimestampString {
