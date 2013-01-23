@@ -43,6 +43,17 @@
 +(NSDate *)dayAfter:(NSDate *)date;
 
 /**
+ Returns a new object the day before the date specified.
+ 
+ The object returned is at midnight of the morning of the day before the date parameter. Does not preserve time, only day. Time zone is preserved.
+ 
+ @param date Date to find the day before.
+ 
+ @return NSDate A new NSDate object the day before date.
+ */
++(NSDate *)dayBefore:(NSDate *)date;
+
+/**
  Returns the current date as a unix timestring.
  
  @return NSString The current Unix timestamp formatted as a string.

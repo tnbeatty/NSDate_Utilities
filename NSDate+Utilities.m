@@ -31,6 +31,11 @@
     return today;
 }
 
++(NSDate *)dayBefore:(NSDate *)date {
+    NSDate * yesterday = [NSDate dateWithTimeInterval:(-24 * 3600) sinceDate:date];
+    return [NSDate dayOf:yesterday];
+}
+
 +(NSString *)currentUnixTimestampString {
     return [NSString stringWithFormat:@"%d", (int)[[NSDate date] timeIntervalSince1970]];
 }
