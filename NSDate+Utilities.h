@@ -81,12 +81,21 @@
 -(BOOL)isSameDayAsDate:(NSDate*)date;
 
 /**
- Reports the time of the date parameter as an integer between 0 and 2400.
+ Reports the time of the date parameter as an integer between 0 and 2400 in UTC.
  
  @param date NSDate date to be analyzed.
  
  @return NSInteger Representation of the datetime between 0 and 2400. Always less than 2400.
  */
 -(NSInteger)time;
+
+/**
+ Reports the time of the date parameter as an integer between 0 and 2400. The time is reported as the local time of the device.
+ 
+ @param date NSDate date to be analyzed.
+ 
+ @return NSInteger Representation of the datetime between 0 and 2359.
+ */
+-(NSInteger)localTime;
 
 @end

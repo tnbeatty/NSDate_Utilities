@@ -13,18 +13,16 @@
 #pragma mark - Class Methods
 
 +(NSDate *)dayOf:(NSDate *)date {
-    
+
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    [calendar setTimeZone:[NSTimeZone localTimeZone]];
     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSTimeZoneCalendarUnit);
     NSDate * today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:date]];
-    
+
     return today;
 }
 
 +(NSDate *)dayAfter:(NSDate *)date {
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    [calendar setTimeZone:[NSTimeZone localTimeZone]];
     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSTimeZoneCalendarUnit);
     NSDate * today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:[NSDate dateWithTimeInterval:(24*3600) sinceDate:date]]];
     
@@ -61,6 +59,13 @@
 -(NSInteger)time {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:self];
+    return ([components hour] * 100) + [components minute];
+}
+
+-(NSInteger)localTime {
+    NSDate * localDate = [NSDate dateWithTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT]/3600 sinceDate:self];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:localDate];
     return ([components hour] * 100) + [components minute];
 }
 
